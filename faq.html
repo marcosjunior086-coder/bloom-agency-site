@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ BLOOM - Plataforma Kako</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background: transparent;
+            margin: 0;
+            padding: 20px 0;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        /* Estilo Card Glassmorphism */
+        .card-dark {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(59, 130, 246, 0.12));
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card-dark:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(59, 130, 246, 0.18));
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Lógica do Acordeão */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-content.active {
+            max-height: 300px; /* Ajuste conforme o tamanho do texto */
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.active {
+            transform: rotate(180deg);
+            color: #8b5cf6;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="w-full max-w-3xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-3">
+                FAQ da Plataforma <span class="gradient-text">Kako</span>
+            </h2>
+            <p class="text-gray-400 text-lg">Perguntas frequentes sobre a plataforma</p>
+        </div>
+
+        <div class="space-y-4">
+            
+            <div class="card-dark rounded-2xl overflow-hidden">
+                <button class="faq-button w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-all">
+                    <span class="font-semibold text-base sm:text-lg pr-4">Como funciona o pagamento na Kako?</span>
+                    <svg class="faq-icon w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <div class="px-6 pb-6 text-gray-400 space-y-2 border-t border-white/5 pt-4">
+                        <p><strong class="text-purple-300">Cristais:</strong> A cada 10.000 cristais = 1 dólar</p>
+                        <p><strong class="text-blue-300">Coins:</strong> A cada 10.000 coins = 1 dólar</p>
+                        <p><strong class="text-white">Valor mínimo para saque:</strong> 5 dólares</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-2xl overflow-hidden">
+                <button class="faq-button w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-all">
+                    <span class="font-semibold text-base sm:text-lg pr-4">Como participar dos eventos?</span>
+                    <svg class="faq-icon w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <div class="px-6 pb-6 text-gray-400 border-t border-white/5 pt-4">
+                        Os eventos são divulgados semanalmente e mensalmente pela agência BLOOM através dos canais oficiais. Fique atento às nossas comunicações nos grupos e redes sociais!
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-dark rounded-2xl overflow-hidden">
+                <button class="faq-button w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-all">
+                    <span class="font-semibold text-base sm:text-lg pr-4">Quais são os benefícios extras?</span>
+                    <svg class="faq-icon w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="faq-content">
+                    <div class="px-6 pb-6 text-gray-400 space-y-2 border-t border-white/5 pt-4">
+                        <p>• Blusas oficiais da agência</p>
+                        <p>• Kits promocionais exclusivos</p>
+                        <p>• Campanhas de destaque na plataforma</p>
+                        <p>• Suporte prioritário 24/7</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.faq-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+                
+                // Fecha outros que estejam abertos (opcional)
+                document.querySelectorAll('.faq-content').forEach(otherContent => {
+                    if (otherContent !== content) {
+                        otherContent.classList.remove('active');
+                        otherContent.previousElementSibling.querySelector('.faq-icon').classList.remove('active');
+                    }
+                });
+
+                // Toggle no atual
+                content.classList.toggle('active');
+                icon.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
